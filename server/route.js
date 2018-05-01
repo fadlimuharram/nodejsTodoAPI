@@ -1,7 +1,7 @@
 
 var todosCtrl = require('./controller/todos');
 var usersCtrl = require('./controller/users');
-
+var {authenticate} = require('./middleware/authenticate');
 module.exports = function(app){
     app.post('/todos',todosCtrl.create);
 
@@ -14,4 +14,6 @@ module.exports = function(app){
     app.patch('/todos/:id',todosCtrl.update);
 
     app.post('/users',usersCtrl.create);
+
+    app.get('/users/me',authenticate,usersCtrl.me);
 }

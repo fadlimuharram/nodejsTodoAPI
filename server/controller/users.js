@@ -17,6 +17,11 @@ var $create = (req,res)=>{
     });
 }
 
+var $me = (req,res)=>{
+    res.send(req.user);
+};
+
 module.exports = {
-    create:$create
+    create:$create,
+    me:$me
 }
